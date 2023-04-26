@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <PackageId>Bustr</PackageId>
+        <Authors>Sluk4d</Authors>
+        <Company>Matozap</Company>
+        <Product>Bustr</Product>
+        <Description>Fast, lightweight and configurable event bus middleware </Description>
+        <Copyright>Matozap</Copyright>
+        <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+        <PackageTags>Matozap, Bustr, Bus, Service Bus, Event Bus, Message Broker, Middleware</PackageTags>
+        <PackageReleaseNotes>Production release</PackageReleaseNotes>
+        <RepositoryType>Github</RepositoryType>
+        <PackageIcon>Logo.png</PackageIcon>
+        <Version>0.0.1-rc1</Version>
+        <LangVersion>11</LangVersion>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="MassTransit.Azure.ServiceBus.Core" Version="8.0.15" />
+      <PackageReference Include="MassTransit.RabbitMQ" Version="8.0.15" />
+    </ItemGroup>
+
+</Project>
