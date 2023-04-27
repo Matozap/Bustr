@@ -62,6 +62,7 @@ public class SubscriptionBuilder
                 case IRabbitMqBusFactoryConfigurator rabbitBusConfigurator:
                     rabbitBusConfigurator.ReceiveEndpoint(subscription.SubscriptionName, configurator =>
                     {
+                        configurator.ExchangeType = "direct";
                         consumerBuilder.AddConsumersFromConfiguration(context, configurator, subscription.ConsumerType.Name);
                     });
                     break;

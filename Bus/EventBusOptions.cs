@@ -1,6 +1,4 @@
-﻿using Bustr.Core;
-
-namespace Bustr.Bus;
+﻿namespace Bustr.Bus;
 
 public class EventBusOptions
 {
@@ -40,8 +38,8 @@ public class EventBusOptions
     
     public EventBusOptions MapTopic(string topicPath, Type eventType, Type? consumerType = null, string? subscriptionName = null)
     {
-        TopicMappings.Add(eventType, topicPath);
-
+        TopicMappings.TryAdd(eventType, topicPath);
+        
         if (consumerType != null && !string.IsNullOrWhiteSpace(subscriptionName))
         {
             Subscriptions.Add(new Subscription(topicPath, consumerType, subscriptionName));
@@ -52,7 +50,7 @@ public class EventBusOptions
     
     public EventBusOptions AddPublishMapping(Type eventType, string topic)
     {
-        TopicMappings.Add(eventType, topic);
+        TopicMappings.TryAdd(eventType, topic);
 
         return this;
     }
