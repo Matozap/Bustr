@@ -12,6 +12,7 @@ provides a scalable and flexible solution for handling location information in a
 
 It focuses on topics in case you want to use it with Azure Service Bus and fanout if you use RabbitMQ and it creates both and their respective subscriptions with only a few lines of code 
 as showcased below.
+
 ------------------------------
 
 ### Usage
