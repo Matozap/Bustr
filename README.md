@@ -71,9 +71,7 @@ services.AddBustr(options =>
 });
 ```
 
-
-----------------------------------
-
+###
 
 ## Contributing
 
