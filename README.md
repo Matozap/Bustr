@@ -75,7 +75,7 @@ services.AddBustr(options =>
 ----------------------------------
 
 
-### Contributing
+## Contributing
 
 It is simple, as all things should be:
 
@@ -83,7 +83,7 @@ It is simple, as all things should be:
 2. Improve it
 3. Make pull request
 
-### Credits
+## Credits
 
 - Initial development by [Slukad](https://github.com/Slukad)
 - MassTransit awesome library by [phatboyg](https://github.com/phatboyg)
