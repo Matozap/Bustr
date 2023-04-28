@@ -12,9 +12,12 @@
         <Copyright>Matozap</Copyright>
         <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
         <PackageTags>Matozap, Bustr, Bus, Service Bus, Event Bus, Message Broker, Middleware</PackageTags>
-        <PackageReleaseNotes>Production release</PackageReleaseNotes>
+        <PackageReleaseNotes>Release Candidate</PackageReleaseNotes>
         <RepositoryType>Github</RepositoryType>
-        <PackageIcon>Logo.png</PackageIcon>
+        <RepositoryUrl>https://github.com/Matozap/Bustr</RepositoryUrl>
+        <PackageProjectUrl>https://github.com/Matozap/Bustr</PackageProjectUrl>
+        <PackageIcon>logo.png</PackageIcon>
+        <PackageReadmeFile>NUGET.md</PackageReadmeFile>
         <Version>0.0.1-rc1</Version>
         <LangVersion>11</LangVersion>
     </PropertyGroup>
@@ -22,6 +25,11 @@
     <ItemGroup>
       <PackageReference Include="MassTransit.Azure.ServiceBus.Core" Version="8.0.15" />
       <PackageReference Include="MassTransit.RabbitMQ" Version="8.0.15" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Include="logo.png" Pack="true" PackagePath="\" />
+        <None Include="NUGET.md" Pack="true" PackagePath="\" />        
     </ItemGroup>
 
 </Project>
