@@ -1,7 +1,6 @@
 # Bustr
 
-![Build](https://img.shields.io/github/actions/workflow/status/Matozap/Location-Microservice/main-build.yml?style=for-the-badge&logo=github&color=0D7EBF)
-![Issues](https://img.shields.io/github/issues/Matozap/Location-Microservice?style=for-the-badge&logo=github&color=0D7EBF)
+![Build](https://img.shields.io/github/actions/workflow/status/Matozap/Bustr/main-build.yml?style=for-the-badge&logo=github&color=0D7EBF)
 ![Commits](https://img.shields.io/github/last-commit/Matozap/Location-Microservice?style=for-the-badge&logo=github&color=0D7EBF)
 
 
