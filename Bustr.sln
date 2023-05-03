@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bustr", "Bustr\Bustr.csproj", "{95EFACEB-9284-4CEA-9B32-21BD69FEBC63}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bustr.Tests", "Bustr.Tests\Bustr.Tests.csproj", "{28518CC1-1BC8-47EB-8242-73D8246546FE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{95EFACEB-9284-4CEA-9B32-21BD69FEBC63}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95EFACEB-9284-4CEA-9B32-21BD69FEBC63}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95EFACEB-9284-4CEA-9B32-21BD69FEBC63}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95EFACEB-9284-4CEA-9B32-21BD69FEBC63}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28518CC1-1BC8-47EB-8242-73D8246546FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28518CC1-1BC8-47EB-8242-73D8246546FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28518CC1-1BC8-47EB-8242-73D8246546FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28518CC1-1BC8-47EB-8242-73D8246546FE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

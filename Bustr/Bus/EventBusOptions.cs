@@ -1,4 +1,6 @@
-﻿namespace Bustr.Bus;
+﻿using System.Reflection;
+
+namespace Bustr.Bus;
 
 public class EventBusOptions
 {
@@ -12,6 +14,7 @@ public class EventBusOptions
     public bool DeadLetterQueueEnabled { get; private set; }
     public TimeSpan[]? RetryIntervals { get; private set; }
     public List<Subscription> Subscriptions { get; } = new();
+    public List<Assembly> Assemblies { get; } = new();
 
     public EventBusOptions()
     {
@@ -77,6 +80,16 @@ public class EventBusOptions
             RetryIntervals = retryIntervals;
             ImmediateRetry = false;
             RetryCount = retryIntervals.Length;
+        }
+
+        return this;
+    }
+    
+    public EventBusOptions AddConsumerAssemblies(params Assembly[] assemblies)
+    {
+        if (assemblies.Length > 0)
+        {
+            Assemblies.AddRange(assemblies);
         }
 
         return this;

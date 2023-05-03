@@ -1,8 +1,9 @@
 ﻿using System.Reflection;
 using Bustr.Bus;
+using Bustr.Core.Consumer;
 using MassTransit;
 
-namespace Bustr.Core;
+namespace Bustr.Core.Subscription;
 
 public class SubscriptionBuilder
 {

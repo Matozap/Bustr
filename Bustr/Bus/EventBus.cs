@@ -19,7 +19,7 @@ public sealed class EventBus : IEventBus
         _bus = bus;
     }
 
-    public async Task Publish<T>(T message) where T : class
+    public async Task PublishAsync<T>(T message) where T : class
     {
         try
         {
@@ -35,7 +35,7 @@ public sealed class EventBus : IEventBus
         }
     }
 
-    public async Task Send<T>(T message, string destination, bool isTopic = false) where T : class
+    public async Task SendAsync<T>(T message, string destination, bool isTopic = false) where T : class
     {
         try
         {

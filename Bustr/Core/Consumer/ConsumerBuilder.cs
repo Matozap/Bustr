@@ -1,9 +1,9 @@
 ﻿using Bustr.Bus;
 using MassTransit;
 
-namespace Bustr.Core;
+namespace Bustr.Core.Consumer;
 
-public class ConsumerBuilder
+public class ConsumerBuilder : IConsumerBuilder
 {
     private readonly EventBusOptions _eventBusOptions;
     

@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 using Bustr.Bus;
-using Bustr.Core;
+using Bustr.Core.Subscription;
 using MassTransit;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -21,6 +21,14 @@ public static class PubSubMiddleware
             {
                 x.SetKebabCaseEndpointNameFormatter();
                 x.AddConsumers(entryAssembly);
+
+                if (eventBusOptions.Assemblies.Count > 0)
+                {
+                    foreach (var assembly in eventBusOptions.Assemblies)
+                    {
+                        x.AddConsumers(assembly);
+                    }
+                }
 
                 switch (eventBusOptions.BusType)
                 {
