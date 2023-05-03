@@ -2,6 +2,7 @@
 
 ![Build](https://img.shields.io/github/actions/workflow/status/Matozap/Bustr/build.yml?style=for-the-badge&logo=github&color=0D7EBF)
 ![Commits](https://img.shields.io/github/last-commit/Matozap/Bustr?style=for-the-badge&logo=github&color=0D7EBF)
+![Package](https://img.shields.io/nuget/dt/bustr?style=for-the-badge&logo=github&color=0D7EBF)
 
 
 ## Bustr
