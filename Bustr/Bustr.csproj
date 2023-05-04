@@ -18,7 +18,7 @@
         <PackageProjectUrl>https://github.com/Matozap/Bustr</PackageProjectUrl>
         <PackageIcon>logo.png</PackageIcon>
         <PackageReadmeFile>NUGET.md</PackageReadmeFile>
-        <Version>0.0.1-rc2</Version>
+        <Version>1.0.0</Version>
         <LangVersion>11</LangVersion>
     </PropertyGroup>
 

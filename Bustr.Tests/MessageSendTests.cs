@@ -32,4 +32,22 @@ public class MessageSendTests
         obtainedEvent?.Key.Should().Be(randomEvent.Key);
         obtainedEvent?.Value.Should().Be(randomEvent.Value);
     }
+    
+    [Fact]
+    public async Task TestSendToTopicSuccess()
+    {
+        var key = $"randomEvent{DateTime.Now:hh-mm-ss}";
+        var randomEvent = new RandomEvent { Key = key, Value = "Success" };
+        await Task.Delay(5000);
+        
+        await _eventBus.SendAsync(randomEvent, "testing/random-event", true);
+        await Task.Delay(5000);
+
+        var contents = Environment.GetEnvironmentVariable("RandomEvent") ?? "";
+        var obtainedEvent = JsonSerializer.Deserialize<RandomEvent>(contents);
+
+        obtainedEvent.Should().NotBeNull();
+        obtainedEvent?.Key.Should().Be(randomEvent.Key);
+        obtainedEvent?.Value.Should().Be(randomEvent.Value);
+    }
 }
