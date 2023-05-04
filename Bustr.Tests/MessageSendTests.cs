@@ -18,20 +18,18 @@ public class MessageSendTests
     [Fact]
     public async Task TestPublishingSuccess()
     {
-        var path = $"randomEvent{DateTime.Now:hh-mm-ss}.log";
-        var randomEvent = new RandomEvent { Key = path, Value = "Success" };
+        var key = $"randomEvent{DateTime.Now:hh-mm-ss}";
+        var randomEvent = new RandomEvent { Key = key, Value = "Success" };
         await Task.Delay(5000);
         
         await _eventBus.PublishAsync(randomEvent);
         await Task.Delay(5000);
 
-        var fileContents = await File.ReadAllTextAsync(path);
-        var obtainedEvent = JsonSerializer.Deserialize<RandomEvent>(fileContents);
+        var contents = Environment.GetEnvironmentVariable("RandomEvent") ?? "";
+        var obtainedEvent = JsonSerializer.Deserialize<RandomEvent>(contents);
 
         obtainedEvent.Should().NotBeNull();
         obtainedEvent?.Key.Should().Be(randomEvent.Key);
         obtainedEvent?.Value.Should().Be(randomEvent.Value);
-        
-        File.Delete(path);
     }
 }
