@@ -27,11 +27,11 @@ public sealed class EventBus : IEventBus
                 return;
 
             await _publishEndpoint.Publish(message);
-            _logger.LogInformation("Publishing changes to {Destination}", message.GetType().Name);
+            _logger.LogInformation("Message of type {Type} was successfully published to the service bus", message.GetType().Name);
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Error publishing changes");
+            _logger.LogError(ex, "Error publishing a message of type {Type}", message.GetType().Name);
         }
     }
 
@@ -44,12 +44,12 @@ public sealed class EventBus : IEventBus
                 var uri = isTopic ? new Uri($"topic:{destination}") : new Uri($"queue:{destination}");
                 var endpoint = await _bus.GetSendEndpoint(uri);
                 await endpoint.Send(message);
-                _logger.LogInformation("Message sent to {Destination}", destination);
+                _logger.LogInformation("Message of type {Type} was successfully sent to the following destination: {Destination}", message.GetType().Name, destination);
             }
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Error publishing changes");
+            _logger.LogError(ex, "Error sending a message of type {Type} to the following destination: {Destination}", message.GetType().Name, destination);
         }
     }
 }

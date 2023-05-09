@@ -3,7 +3,7 @@
 ![Package](https://img.shields.io/nuget/dt/bustr?style=for-the-badge&logo=nuget&color=0D7EBF)
 
 
-Bustr is a simplification of MassTransit so you can easily inject the pub-sub pattern into your microservices in an uniform way and
+Bustr is an event bus middleware abstraction and simplification on top of MassTransit so you can easily inject the pub-sub pattern into your applications in an uniform way and
 provides a scalable and flexible solution for handling location information in a distributed system, allowing other services or applications to easily and reliably retrieve location information as needed.
 
 It focuses on topics in case you want to use it with Azure Service Bus and fan-out if you use RabbitMQ and it creates both and their respective subscriptions with only a few lines of code
@@ -62,7 +62,7 @@ public class PersonCreateHandler
 
 ```csharp
 
-public class PersonEventConsumer : IConsumer<PersonEvent>
+public class PersonEventConsumer : IEventBusConsumer<PersonEvent>
 {
     public async Task Consume(ConsumeContext<PersonEvent> context)
     {

@@ -32,6 +32,7 @@ public static class PubSubMiddleware
 
                 switch (eventBusOptions.BusType)
                 {
+                    case BusType.InMemory:
                     default:
                         x.UsingInMemory((context, cfg) =>
                         {

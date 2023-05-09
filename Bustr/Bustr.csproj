@@ -8,18 +8,20 @@
         <Authors>Sluk4d</Authors>
         <Company>Matozap</Company>
         <Product>Bustr</Product>
-        <Description>Fast, lightweight and configurable event bus middleware </Description>
+        <Description>Bustr is an event bus middleware abstraction and simplification of MassTransit so you can easily inject the pub-sub pattern into your applications in an uniform way</Description>
         <Copyright>Matozap</Copyright>
         <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
         <PackageTags>Matozap, Bustr, Bus, Service Bus, Event Bus, Message Broker, Middleware</PackageTags>
-        <PackageReleaseNotes>Release Candidate</PackageReleaseNotes>
+        <PackageReleaseNotes>Production Release</PackageReleaseNotes>
         <RepositoryType>Github</RepositoryType>
         <RepositoryUrl>https://github.com/Matozap/Bustr</RepositoryUrl>
         <PackageProjectUrl>https://github.com/Matozap/Bustr</PackageProjectUrl>
         <PackageIcon>logo.png</PackageIcon>
         <PackageReadmeFile>NUGET.md</PackageReadmeFile>
-        <Version>1.0.0</Version>
+        <Version>1.0.1</Version>
         <LangVersion>11</LangVersion>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <NoWarn>$(NoWarn);1591</NoWarn>
     </PropertyGroup>
 
     <ItemGroup>
