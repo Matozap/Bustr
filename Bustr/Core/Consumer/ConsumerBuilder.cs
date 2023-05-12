@@ -3,7 +3,7 @@ using MassTransit;
 
 namespace Bustr.Core.Consumer;
 
-public class ConsumerBuilder : IConsumerBuilder
+internal class ConsumerBuilder : IConsumerBuilder
 {
     private readonly EventBusOptions _eventBusOptions;
     
@@ -12,6 +12,7 @@ public class ConsumerBuilder : IConsumerBuilder
     {
         _eventBusOptions = eventBusOptions;
     }
+    
     public void AddConsumersFromConfiguration(IRegistrationContext context, IReceiveEndpointConfigurator configurator, string className)
     {
         var interfaceType = typeof(IConsumer);

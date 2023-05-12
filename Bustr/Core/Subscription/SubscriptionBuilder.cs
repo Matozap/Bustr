@@ -5,7 +5,7 @@ using MassTransit;
 
 namespace Bustr.Core.Subscription;
 
-public class SubscriptionBuilder
+internal class SubscriptionBuilder
 {
     private readonly EventBusOptions _eventBusOptions;
 
@@ -29,7 +29,7 @@ public class SubscriptionBuilder
         busFactoryConfigurator.Message<T>(e => e.SetEntityName(topicName));
     }
     
-    public void MapEventToTopic(Type type, string topicName, IInMemoryBusFactoryConfigurator? inMemoryBusFactoryConfigurator,  
+    internal void MapEventToTopic(Type type, string topicName, IInMemoryBusFactoryConfigurator? inMemoryBusFactoryConfigurator,  
         IServiceBusBusFactoryConfigurator? serviceBusBusFactoryConfigurator, IRabbitMqBusFactoryConfigurator? rabbitMqBusFactoryConfigurator)
     {
         var methodInfo = serviceBusBusFactoryConfigurator != null ? typeof(SubscriptionBuilder).GetMethod(nameof(SetMessageTopologyServiceBus), BindingFlags.NonPublic | BindingFlags.Instance)
@@ -46,7 +46,7 @@ public class SubscriptionBuilder
         generic.Invoke(this, new[]{ cfg, topicName });
     }
 
-    public void RegisterSubscriptionDynamically<T>(IRegistrationContext context, List<EventBusOptions.Subscription> subscriptions, IBusFactoryConfigurator<T> busFactoryConfigurator) where T : IReceiveEndpointConfigurator
+    internal void RegisterSubscriptionDynamically<T>(IRegistrationContext context, List<EventBusOptions.Subscription> subscriptions, IBusFactoryConfigurator<T> busFactoryConfigurator) where T : IReceiveEndpointConfigurator
     {
         var consumerBuilder = new ConsumerBuilder(_eventBusOptions);
 

@@ -2,7 +2,7 @@
 
 namespace Bustr.Core.Consumer;
 
-public interface IConsumerBuilder
+internal interface IConsumerBuilder
 {
-    void AddConsumersFromConfiguration(IRegistrationContext context, IReceiveEndpointConfigurator configurator, string className);
+    internal void AddConsumersFromConfiguration(IRegistrationContext context, IReceiveEndpointConfigurator configurator, string className);
 }

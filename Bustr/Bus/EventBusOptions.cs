@@ -4,11 +4,11 @@ namespace Bustr.Bus;
 
 public class EventBusOptions
 {
-    public record Subscription(string TopicPath, Type ConsumerType, string SubscriptionName);
+    internal record Subscription(string TopicPath, Type ConsumerType, string SubscriptionName);
     /// <summary>
     /// Contains the connection string when the bus type is not InMemory
     /// </summary>
-    public string? ConnectionString { get; private set; }
+    internal string? ConnectionString { get; private set; }
     /// <summary>
     /// Contains the bus type - Use the Configure method to set it
     /// </summary>
@@ -36,15 +36,15 @@ public class EventBusOptions
     /// <summary>
     /// Contains the retry intervals - Use the SetRetryIntervals method to set it
     /// </summary>
-    public TimeSpan[]? RetryIntervals { get; private set; }
+    internal TimeSpan[]? RetryIntervals { get; private set; }
     /// <summary>
     /// Contains the list of subscription for the application - Use the AddSubscription method to set them
     /// </summary>
-    public List<Subscription> Subscriptions { get; } = new();
+    internal List<Subscription> Subscriptions { get; } = new();
     /// <summary>
     /// Contains the list of assemblies to search for consumers - Use the AddConsumerAssemblies method to set them
     /// </summary>
-    public List<Assembly> Assemblies { get; } = new();
+    internal List<Assembly> Assemblies { get; } = new();
     
     /// <summary>
     /// Configures the bus type and optionally sets the connection string
