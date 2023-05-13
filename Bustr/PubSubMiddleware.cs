@@ -40,7 +40,7 @@ public static class PubSubMiddleware
                             {
                                 foreach (var (type, topicName) in eventBusOptions.TopicMappings)
                                 {
-                                    subscriptionConfiguration.MapEventToTopic(type, topicName, inMemoryBusFactoryConfigurator: cfg, serviceBusBusFactoryConfigurator: null, rabbitMqBusFactoryConfigurator: null);
+                                    subscriptionConfiguration.MapEventToTopic(type, topicName, inMemoryBusFactoryConfigurator: cfg, serviceBusBusFactoryConfigurator: null, rabbitMqBusFactoryConfigurator: null, amazonSqsBusFactoryConfigurator: null);
                                 }
                             }
 
@@ -57,7 +57,7 @@ public static class PubSubMiddleware
                             {
                                 foreach (var (type, topicName) in eventBusOptions.TopicMappings)
                                 {
-                                    subscriptionConfiguration.MapEventToTopic(type, topicName, inMemoryBusFactoryConfigurator: null, serviceBusBusFactoryConfigurator: cfg, rabbitMqBusFactoryConfigurator: null);
+                                    subscriptionConfiguration.MapEventToTopic(type, topicName, inMemoryBusFactoryConfigurator: null, serviceBusBusFactoryConfigurator: cfg, rabbitMqBusFactoryConfigurator: null, amazonSqsBusFactoryConfigurator: null);
                                 }
                             }
 
@@ -78,10 +78,35 @@ public static class PubSubMiddleware
                             {
                                 foreach (var (type, topicName) in eventBusOptions.TopicMappings)
                                 {
-                                    subscriptionConfiguration.MapEventToTopic(type, topicName, inMemoryBusFactoryConfigurator: null, serviceBusBusFactoryConfigurator: null, rabbitMqBusFactoryConfigurator: cfg);
+                                    subscriptionConfiguration.MapEventToTopic(type, topicName, inMemoryBusFactoryConfigurator: null, serviceBusBusFactoryConfigurator: null, rabbitMqBusFactoryConfigurator: cfg, amazonSqsBusFactoryConfigurator: null);
                                 }
                             }
                             
+                            if (eventBusOptions.Subscriptions.Count > 0)
+                            {
+                                subscriptionConfiguration.RegisterSubscriptionDynamically(context, eventBusOptions.Subscriptions, cfg);
+                            }
+
+                            cfg.ConfigureEndpoints(context);
+                        });
+                        break;
+                    case BusType.AmazonSqs:
+                        x.UsingAmazonSqs((context, cfg) =>
+                        {
+                            cfg.Host(eventBusOptions.Region,h =>
+                            {
+                                h.AccessKey(eventBusOptions.AccessKey);
+                                h.SecretKey(eventBusOptions.SecretKey);
+                            });
+
+                            if (eventBusOptions.TopicMappings.Count > 0)
+                            {
+                                foreach (var (type, topicName) in eventBusOptions.TopicMappings)
+                                {
+                                    subscriptionConfiguration.MapEventToTopic(type, topicName, inMemoryBusFactoryConfigurator: null, serviceBusBusFactoryConfigurator: null, rabbitMqBusFactoryConfigurator: null, amazonSqsBusFactoryConfigurator: cfg);
+                                }
+                            }
+
                             if (eventBusOptions.Subscriptions.Count > 0)
                             {
                                 subscriptionConfiguration.RegisterSubscriptionDynamically(context, eventBusOptions.Subscriptions, cfg);

@@ -10,6 +10,18 @@ public class EventBusOptions
     /// </summary>
     internal string? ConnectionString { get; private set; }
     /// <summary>
+    /// Contains the Access Key when the bus type is Amazon Sqs
+    /// </summary>
+    internal string? AccessKey { get; private set; }
+    /// <summary>
+    /// Contains the Secret Key when the bus type is Amazon Sqs
+    /// </summary>
+    internal string? SecretKey { get; private set; }
+    /// <summary>
+    /// Contains the Region when the bus type is Amazon Sqs
+    /// </summary>
+    internal string? Region { get; private set; }
+    /// <summary>
     /// Contains the bus type - Use the Configure method to set it
     /// </summary>
     public BusType BusType { get; private set; }
@@ -47,7 +59,7 @@ public class EventBusOptions
     internal List<Assembly> Assemblies { get; } = new();
     
     /// <summary>
-    /// Configures the bus type and optionally sets the connection string
+    /// Configures the bus type and optionally sets the connection string - For Amazon SQS use the method overload with region, access key and secret key
     /// </summary>
     /// <param name="busType">The bus type to be used</param>
     /// <param name="connectionString">The connection string which is required when the bus type is not InMemory</param>
@@ -61,6 +73,51 @@ public class EventBusOptions
         {
             throw new ArgumentNullException(nameof(connectionString), "The connection string for the Event bus needs to be set if the bus type is not InMemory");
         }
+        
+        if (BusType == BusType.AmazonSqs)
+        {
+            throw new ArgumentNullException(nameof(connectionString), "When using Amazon SQS you need to use the Configure overload passing the region, access key and secret key.");
+        }
+        
+        return this;
+    }
+    
+    /// <summary>
+    /// Configures the bus type and optionally sets the region, access key and secret key for managed cloud services like Amazon SQS
+    /// </summary>
+    /// <param name="busType">The bus type to be used</param>
+    /// <param name="region">The cloud region</param>
+    /// <param name="accessKey">The access key</param>
+    /// <param name="secretKey">The secret key</param>
+    /// <returns>EventBusOptions</returns>
+    /// <exception cref="ArgumentOutOfRangeException">Bus type need to be Amazon SQS to use this method overload</exception>
+    /// <exception cref="ArgumentNullException">Parameters cannot be null or empty</exception>
+    public EventBusOptions Configure(BusType busType, string region, string accessKey, string secretKey)
+    {
+        BusType = busType;
+        if (BusType != BusType.InMemory && BusType != BusType.AmazonSqs)
+        {
+            throw new ArgumentOutOfRangeException(nameof(busType), "To use region, access key and secret key, the bus type must be Amazon SQS ");
+        }
+        
+        if (BusType == BusType.AmazonSqs && string.IsNullOrEmpty(region))
+        {
+            throw new ArgumentNullException(nameof(region), "Region for the Event bus needs to be set if the bus type is not InMemory");
+        }
+        
+        if (BusType == BusType.AmazonSqs && string.IsNullOrEmpty(accessKey))
+        {
+            throw new ArgumentNullException(nameof(accessKey), "AccessKey for the Event bus needs to be set if the bus type is not InMemory");
+        }
+        
+        if (BusType == BusType.AmazonSqs && string.IsNullOrEmpty(secretKey))
+        {
+            throw new ArgumentNullException(nameof(secretKey), "SecretKey for the Event bus needs to be set if the bus type is not InMemory");
+        }
+
+        Region = region;
+        AccessKey = accessKey;
+        SecretKey = secretKey;
         
         return this;
     }
@@ -196,5 +253,6 @@ public enum BusType
 {
     InMemory,
     AzureServiceBus,
-    RabbitMq
+    RabbitMq,
+    AmazonSqs
 }

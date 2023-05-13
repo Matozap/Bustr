@@ -18,13 +18,15 @@
         <PackageProjectUrl>https://github.com/Matozap/Bustr</PackageProjectUrl>
         <PackageIcon>logo.png</PackageIcon>
         <PackageReadmeFile>NUGET.md</PackageReadmeFile>
-        <Version>1.0.2</Version>
+        <Version>7.0.1</Version>
         <LangVersion>11</LangVersion>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
         <NoWarn>$(NoWarn);1591</NoWarn>
     </PropertyGroup>
 
     <ItemGroup>
+      <PackageReference Include="MassTransit.ActiveMQ" Version="8.0.15" />
+      <PackageReference Include="MassTransit.AmazonSQS" Version="8.0.15" />
       <PackageReference Include="MassTransit.Azure.ServiceBus.Core" Version="8.0.15" />
       <PackageReference Include="MassTransit.RabbitMQ" Version="8.0.15" />
     </ItemGroup>
